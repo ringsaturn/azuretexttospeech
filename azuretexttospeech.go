@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
 	"net/http"
 	"time"
@@ -56,7 +56,7 @@ func (az *AzureCSTextToSpeech) SynthesizeWithContext(ctx context.Context, speech
 	switch response.StatusCode {
 	case http.StatusOK:
 		// The request was successful; the response body is an audio file.
-		return ioutil.ReadAll(response.Body)
+		return io.ReadAll(response.Body)
 	case http.StatusBadRequest:
 		return nil, fmt.Errorf("%d - A required parameter is missing, empty, or null. Or, the value passed to either a required or optional parameter is invalid. A common issue is a header that is too long", response.StatusCode)
 	case http.StatusUnauthorized:
@@ -106,7 +106,7 @@ func (az *AzureCSTextToSpeech) refreshToken() error {
 		return fmt.Errorf("unexpected status code; received http status=%s", response.Status)
 	}
 
-	body, _ := ioutil.ReadAll(response.Body)
+	body, _ := io.ReadAll(response.Body)
 	az.accessToken = string(body)
 	return nil
 }

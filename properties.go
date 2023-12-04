@@ -42,6 +42,7 @@ func (a AudioOutput) String() string {
 }
 
 // Gender type for the digitized language
+//
 //go:generate enumer -type=Gender -linecomment -json
 type Gender int
 
@@ -54,6 +55,7 @@ const (
 
 // Locale references the language or locale for text-to-speech.
 // See "locale" in https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#standard-voices
+//
 //go:generate enumer -type=Locale -linecomment -json
 type Locale int
 

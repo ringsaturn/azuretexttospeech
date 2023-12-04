@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	tts "github.com/jesseward/azuretexttospeech"
+	tts "github.com/ringsaturn/azuretexttospeech"
 )
 
 func exit(err error) {
